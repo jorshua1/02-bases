@@ -1,5 +1,28 @@
 <h4>Listado</h4>
+<div *ngIf="characterList.length===0">
+  <p>No hay personajes, inserte alguno</p>
+</div>
 <ul class="list-group">
-  <li class="list-group-item">Krillin - 500</li>
-  <li class="list-group-item">Goku - 10000</li>
+  <li *ngFor="
+  let character of characterList;
+  let i=index;
+  let isFirst=first;
+  let isLast=last;
+  " [ngClass]="{
+  'list-group-item-success':isFirst,
+  'list-group-item-danger':isLast,
+  'list-group-item-info':character.name==='Bulma' || character.name==='bulma'
+}" class="list-group-item d-flex justify-content-between align-items-center">
+    <span>
+      <span>{{i+1}} </span>
+      <span>
+        <strong>Name:</strong> {{character.name}}
+      </span>
+      <br>
+      <span>
+        <strong>Power:</strong> {{character.power}}
+      </span>
+    </span>
+    <button class="btn btn-danger text-bg-danger" (click)="onDeleteCharacter(character.id)">x</button>
+  </li>
 </ul>

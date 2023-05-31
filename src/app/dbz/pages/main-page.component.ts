@@ -20,7 +20,7 @@ export class DbzComponent {
     this.dbzService.deleteCharacterById(id);
   }
 
-  onNewCharacter(character: Character): void {
+  onNewCharacter(character: Character) {
     this.dbzService.addCharacter(character);
   }
 }
